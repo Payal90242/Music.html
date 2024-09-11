@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+                              <meta charset="UTF-8">
+                              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                              <title>Music Player</title>
+                              <style>
+                                                            body
+                                                            {
+                                                                                          background-color: aliceblue;
+                                                                                          font-family: Arial, Helvetica, sans-serif;
+                                                                                          display: flex;
+                                                                                          justify-content: center;
+                                                                                          align-items: center;
+                                                                                          height: 100vh;
+                                                                                          margin: 0;
+                                                            }
+                                                            .controls
+                                                            {
+                                                                                          display: flex;
+                                                                                          flex-direction: column;
+                                                                                          align-items: center;
+                                                            }
+                                                            .progress-bar
+                                                            {
+                                                                                          display: flex;
+                                                                                          align-items: center;
+                                                                                          justify-content: space-between;
+                                                                                          width: 200px;
+                                                                                          margin-top: 10px;
+                                                            }
+                                                            #progress
+                                                            {
+                                                                                          width: 100px;
+                                                                                          appearance: none;
+                                                                                          background-color: #ddd;
+                                                                                          height: 5px;
+                                                                                          border-radius: 5px;
+                                                                                          outline: none;
+                                                            }
+                                                            #progress::-webkit-slider-thumb
+                                                            {
+                                                                                          appearance: none;
+                                                                                          width: 15px;
+                                                                                          height: 15px;
+                                                                                          border-radius: 50%;
+                                                                                          background-color: #00bfa5;
+                                                                                          cursor: pointer;
+                                                            }
+                                                            #progress::-moz-range-thumb
+                                                            {
+                                                                                          width: 15px;
+                                                                                          height: 15px;
+                                                                                          border-radius: 50%;
+                                                                                          background-color: #00bfa5;
+                                                                                          cursor: pointer;
+                                                            }
+                                                            #current-time,#duration
+                                                            {
+                                                                                          font-size: 14px;
+                                                                                          color:white;
+                                                            }
+                                                            .Music-player
+                                                            {
+                                                                                          background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq9ceyd6szP6B63P2BmZGiqjhs7_YrdTpWYA&s);
+                                                                                          text-align: center;
+                                                                                          display: flex;
+                                                                                          flex-direction: column;
+                                                                                          height: 500px;
+                                                                                          margin: 50px auto;
+                                                                                          width: 500px;
+                                                                                          padding: 20px;
+                                                                                          border: 2px solid black;
+                                                                                           border-radius: 20px;
+                                                                                           background-size: cover;
+                                                                                           background-position: center;
+                                                                                           box-shadow: 0 10px 20px gba(0,0,0,0.5);
+                                                                                           color: white;
+                                                                                           text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+                                                                                           font-size: 30px;
+                                                                                           font-family:Verdana, Geneva, Tahoma, sans-serif;
+                                                            }
+                                                            button
+                                                            {
+                                                                                          padding: 10px 20px;
+                                                                                          margin: 5px;
+                                                                                          border: none;
+                                                                                          background-color:white;
+                                                                                          color:black;
+                                                                                          cursor: pointer;
+                                                            }
+                                                            button:hover
+                                                            {
+                                                                                          background-color:lightgrey;
+                                                            }
+                              </style>
+</head>
+<body>
+                 <div class="Music-player">
+                              <h2 id="Tum se">Tum se</h2>
+                              <audio id="audio-player" src="WhatsApp Audio 2024-08-25 at 22.48.11.mpeg"></audio>
+                              <button id="play-btn">
+                                                            <img src="https://i.etsystatic.com/10919371/r/il/155a7d/1563938723/il_794xN.1563938723_1rmr.jpg" alt="Play" width="68px">
+                              </button>
+                              <button id="pause-btn">
+                                                            <img src="https://t3.ftcdn.net/jpg/02/56/70/62/240_F_256706280_KRAOBYQckV8knjkQH2McCkJKzJQDUN0e.jpg" alt="Pause" width="50px">
+                              </button>
+                              <div class="progress-bar">
+                                                            <span id="current-time">00:00</span>
+                                                            <input type="=range" id="progress" value="0" min="0" max="312">
+                                                            <span id="duration">05:12</span>
+                              </div>
+                 </div> 
+                 <script>
+                              document.getElementById("play-btn").addEventListener("click",function(){
+                                                            const audio=
+                                                            document.getElementById("audio-player");
+                                                            audio.play();
+                                                            document.getElementById("Tum se").textContent="Play:Tum se";
+                              });
+                              document.getElementById("pause-btn").addEventListener("click",function(){
+                                                            const audio=
+                                                            document.getElementById("audio-player");
+                                                            audio.pause();
+                                                            document.getElementById("Tum se").textContent="Pause:Tum se";
+                              });
+                              audio.addEventListener("timeupdate",function(){
+                                                            const current=audio.currentTime;
+                                                            const duration=audio.duration;
+                                                            progrss.value=(current/duration)*100;
+                              });
+                              const audio=
+                              document.getElementById("audio-player");
+                              const playBtn=
+                              document.getElementById("play-btn");
+                              const progress=
+                              document.getElementById("progress");
+                              const currentTime= 
+                              document.getElementById("current-time");
+                              const manualDuration= 312;
+                              document.getElementById("duration");
+                              PlayBtn.addEventListener("click",function(){
+                                                            if(audio.pause){
+                                                                                          audio.play();
+                                                                                          playBtn.textContent="pause";
+                                                            }else{
+                                                                                          audio.pause();
+                                                                                          playBtn.textContent="Play";
+                                                            }
+                              });
+                              audio.addEventListener("timeupdate", function(){
+                                                            const current=audio.currentTime;
+                                                            const duration=audio.manualduration;
+                                                            progress.value=(current/manualduration)*100;
+                                                            currentTime.textContent=formatTime(current);
+                                                            if(!isNaN(manualduration)){
+                                                                                          durationTime.textContent=formatTime(manualduration);
+                                                            }
+                              });
+                              progress.addEventListener("input",function(){
+                                                            const duration=audio.manualduration;
+                                                            audio.currentTime=(progress.value/100)*manualduration;
+                              });
+                              function formatTime(time){
+                                                            const minutes=Math.floor(time/60);
+                                                            const seconds=Math.floor(time%60);
+                              }                            
+
+                 </script>            
+</body>
+</html>
